@@ -1,0 +1,81 @@
+﻿@section nav{
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">To Do</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="navbar-nav">
+                <li class="nav-item text-black"><a class="nav-link" asp-action="Index" asp-controller="Home">Anasayfa</a></li>
+
+            </ul>
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hesabım</a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <span class="dropdown-item-text text text-black-50">Shopping List Admin</span>
+                        <form>
+                            <a class="dropdown-item" asp-action="Logout" asp-controller="Login">Çıkış yap</a>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+}
+
+<div class="container py-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-12 col-xl-10">
+
+            <div class="card mask-custom">
+                <div class="card-body p-4 text-white">
+
+                    <div class="text-center pt-3 pb-2">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                             alt="Check" width="60">
+                        <h2 class="my-4">YAPILACAKLAR LİSTESİ</h2>
+                    </div>
+                    <form>
+                        <input type="text" class="form-control" placeholder="Listeye eklenecek ögeyi giriniz.." />
+                        <br />
+                        <center>
+                            <button class="btn btn-warning">Ekle</button>
+                        </center>
+                        <br />
+                    </form>
+                    <table class="table text-white mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr class="fw-normal">
+                                <td class="align-middle">
+                                    <span>Call Sam For payments</span>
+                                </td>
+                                <td class="align-middle d-flex justify-content-end">
+                                    <a href="#!" data-mdb-toggle="tooltip" title="Done">
+                                        <input type="button" class="btn btn-success" value="Yapıldı" />
+                                    </a>
+                                    &ensp;
+                                    <a href="#!" data-mdb-toggle="tooltip" title="Remove">
+                                        <input type="button" class="btn btn-danger" value="Kaldır" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br />
+<br />
