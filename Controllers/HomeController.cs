@@ -8,11 +8,11 @@ namespace ToDo.Controllers
     [Authorize(AuthenticationSchemes = "UserAuthentication")]
     public class HomeController : Controller
     {
-        //MyDbContext _context;
-        //public HomeController(MyDbContext context)
-        //{
-        //    _context = context;
-        //}
+        MyDbContext _context;
+        public HomeController(MyDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();

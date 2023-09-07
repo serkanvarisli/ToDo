@@ -58,7 +58,9 @@ namespace ToDo.Controllers
         }
         public IActionResult Logout()
         {
-            return View();
+            HttpContext.SignOutAsync("UserAuthentication"); // Oturumu sonlandır
+            return RedirectToAction("Index", "Home"); // Anasayfaya yönlendir
+
         }
     }
 
