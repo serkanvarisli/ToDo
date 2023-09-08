@@ -1,4 +1,5 @@
-﻿@section nav{
+﻿@model List
+@section nav{
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">To Do</a>
@@ -14,7 +15,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hesabım</a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <span class="dropdown-item-text text text-black-50">Shopping List Admin</span>
+                        <span class="dropdown-item-text text text-black-50"> @ViewBag.Username</span>
                         <form>
                             <a class="dropdown-item" asp-action="Logout" asp-controller="Login">Çıkış yap</a>
                         </form>
@@ -24,7 +25,6 @@
         </div>
     </nav>
 }
-
 <div class="container py-5">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-12 col-xl-10">
@@ -37,10 +37,13 @@
                              alt="Check" width="60">
                         <h2 class="my-4">YAPILACAKLAR LİSTESİ</h2>
                     </div>
-                    <form>
-                        <input type="text" class="form-control" placeholder="Listeye eklenecek ögeyi giriniz.." />
+                    <form asp-action="Add" asp-controller="Home" method="post">
+                        <input type="text" class="form-control" name="Value" placeholder="Listeye eklenecek ögeyi giriniz.." />
                         <br />
-                        <center>
+                        <input type="text" name="Tarih" value="@DateTime.Now" hidden />
+                        <input type="text" name="UserId" value="@ViewBag.UserId" hidden />
+                            <center>
+                            @TempData["Success"]
                             <button class="btn btn-warning">Ekle</button>
                         </center>
                         <br />

@@ -15,7 +15,7 @@ public partial class MyDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Task> Tasks { get; set; }
+    public virtual DbSet<List> Lists { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -25,16 +25,16 @@ public partial class MyDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Task>(entity =>
+        modelBuilder.Entity<List>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Task");
+            entity.HasKey(e => e.ListId).HasName("PK_Task");
+
+            entity.ToTable("List");
 
             entity.Property(e => e.Tarih).HasColumnType("date");
             entity.Property(e => e.Value).IsUnicode(false);
 
-            entity.HasOne(d => d.User).WithMany()
+            entity.HasOne(d => d.User).WithMany(p => p.Lists)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK_Task_User");
         });
@@ -42,8 +42,6 @@ public partial class MyDbContext : DbContext
         modelBuilder.Entity<User>(entity =>
         {
             entity.ToTable("User");
-
-            entity.Property(e => e.UserId).ValueGeneratedNever();
         });
 
         OnModelCreatingPartial(modelBuilder);
