@@ -25,8 +25,9 @@ namespace ToDo.Controllers
             ViewBag.Username = username;
             ViewBag.UserId = UserId;
             
+            var list = _context.Lists.ToList();
 
-            return View();
+            return View(list);
         }
         [AllowAnonymous]
         [HttpPost]
@@ -41,11 +42,14 @@ namespace ToDo.Controllers
         {
             return View();
         }
-        [HttpPost]
 
-        public IActionResult Delete()
+        [AllowAnonymous]
+        public IActionResult Delete(int id)
         {
-            return View();
+            var delete = _context.Lists.Find(id);
+            _context.Lists.Remove(delete);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
     }

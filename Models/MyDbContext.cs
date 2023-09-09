@@ -31,7 +31,7 @@ public partial class MyDbContext : DbContext
 
             entity.ToTable("List");
 
-            entity.Property(e => e.Tarih).HasColumnType("date");
+            entity.Property(e => e.Tarih).HasColumnType("datetime");
             entity.Property(e => e.Value).IsUnicode(false);
 
             entity.HasOne(d => d.User).WithMany(p => p.Lists)

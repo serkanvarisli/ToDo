@@ -1,4 +1,4 @@
-﻿@model List
+﻿@model List<List>
 @section nav{
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -43,34 +43,43 @@
                         <input type="text" name="Tarih" value="@DateTime.Now" hidden />
                         <input type="text" name="UserId" value="@ViewBag.UserId" hidden />
                             <center>
-                            @TempData["Success"]
-                            <button class="btn btn-warning">Ekle</button>
+                            <button class="btn btn-success">&ensp; Ekle &ensp;</button>
+                            <br />
                         </center>
                         <br />
                     </form>
                     <table class="table text-white mb-0">
                         <thead>
                             <tr>
-                                <th scope="col"></th>
+                                <th scope="col">Yapılacaklar Listesi</th>
+                                <th scope="col">Eklenme Tarihi</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
 
                         <tbody>
+                            @foreach(var list in Model)
+                            {
+                                
                             <tr class="fw-normal">
                                 <td class="align-middle">
-                                    <span>Call Sam For payments</span>
+                                    <span>@list.Value</span>
                                 </td>
+                                    <td class="align-middle">
+                                        <span>@list.Tarih.Value.ToString("dd.MM.yyyy HH:mm")</span>
+                                    </td>
                                 <td class="align-middle d-flex justify-content-end">
                                     <a href="#!" data-mdb-toggle="tooltip" title="Done">
-                                        <input type="button" class="btn btn-success" value="Yapıldı" />
+                                        <input type="button" class="btn btn-warning" value="Güncelle" />
                                     </a>
                                     &ensp;
-                                    <a href="#!" data-mdb-toggle="tooltip" title="Remove">
-                                        <input type="button" class="btn btn-danger" value="Kaldır" />
-                                    </a>
+                                        <a asp-action="Delete" asp-controller="Home" asp-route-id="@list.ListId" onclick="return confirm('@list.Value adlı ögeyi gerçekten silmek istiyor musunuz?')">
+                                            <button class="btn btn-danger">Kaldır</button>
+                                        </a>
                                 </td>
                             </tr>
+                            }
+
                         </tbody>
 
                     </table>
