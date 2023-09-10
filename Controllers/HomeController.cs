@@ -40,9 +40,11 @@ namespace ToDo.Controllers
         [AllowAnonymous]
         public IActionResult Update(List list)
         {
+            TempData["guncel"] = "Güncellendi";
             _context.Lists.Update(list);
             _context.SaveChanges();
             return RedirectToAction("Index","Home");
+            
         }
 
         [AllowAnonymous]

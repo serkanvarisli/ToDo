@@ -51,10 +51,16 @@ namespace ToDo.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
             _context.Users.Add(user);
             _context.SaveChanges();
-
-            return View();
+            return RedirectToAction("Register", "Login");
+            }
         }
         public IActionResult Logout()
         {

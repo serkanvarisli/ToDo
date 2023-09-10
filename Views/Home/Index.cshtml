@@ -74,7 +74,7 @@
                                 <td class="align-middle d-flex justify-content-end">
                                         <form asp-action="Update" asp-controller="Home" method="post">
                                             <input type="hidden" name="ListId" value="@list.ListId" />
-                                            <input type="text" name="Value" class="deger" placeholder="Ögenin yeni halini giriniz" style="display:none" />
+                                            <input type="text" name="Value" class="deger" placeholder="Ögenin yeni halini giriniz" style="display:none" required />
                                             <input type="text" name="Tarih" value="@DateTime.Now" style="display:none" />
                                             <input type="text" name="UserId" value="@ViewBag.UserId" style="display:none" />
                                             <input type="button" class="btn btn-secondary edit" value="Düzenle" />

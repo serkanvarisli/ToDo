@@ -35,7 +35,8 @@
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form1Example23">Şifre</label> 
                         <input type="password" id="password" name="UserPassword" class="form-control form-control-lg" required />
-                        <label class="form-label text-sm text-black-50" for="form1Example23">(Şifre en az 8 karakter olmalı ve büyük harf,küçük harf içermelidir)</label> <br />
+                        <span asp-validation-for="UserPassword" class="text-danger"></span>
+                        <label class="form-label text-sm text-black-50" for="form1Example23">(Şifre en az 8 karakter olmalı)</label> <br />
                         <input type="checkbox" id="showPassword" /> Şifreyi göster
                         <span asp-validation-for="UserPassword" class="text-danger"></span>
                     </div>
