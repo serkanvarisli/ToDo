@@ -37,10 +37,12 @@ namespace ToDo.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index","Home");
         }
-        [HttpPost]
-        public IActionResult Update()
+        [AllowAnonymous]
+        public IActionResult Update(List list)
         {
-            return View();
+            _context.Lists.Update(list);
+            _context.SaveChanges();
+            return RedirectToAction("Index","Home");
         }
 
         [AllowAnonymous]
