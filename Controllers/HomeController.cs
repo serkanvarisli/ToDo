@@ -25,7 +25,9 @@ namespace ToDo.Controllers
             ViewBag.Username = username;
             ViewBag.UserId = UserId;
             
-            var list = _context.Lists.ToList();
+            var list = _context.Lists
+                .Where(l => l.User.UserMail == username)
+                .ToList();
 
             return View(list);
         }
