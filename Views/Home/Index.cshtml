@@ -40,8 +40,8 @@
                     <form asp-action="Add" asp-controller="Home" method="post">
                         <input type="text" class="form-control" name="Value" placeholder="Listeye eklenecek ögeyi giriniz.." />
                         <br />
-                        <input type="text" name="Tarih" value="@DateTime.Now" hidden />
-                        <input type="text" name="UserId" value="@ViewBag.UserId" hidden />
+                        <input type="text" name="Tarih" value="@DateTime.Now" style="display:none" />
+                        <input type="text" name="UserId" value="@ViewBag.UserId" style="display:none" />
                             <center>
                             <button class="btn btn-success">&ensp; Ekle &ensp;</button>
                             <br />
@@ -62,15 +62,24 @@
                             {
                                 
                             <tr class="fw-normal">
-                                <td class="align-middle">
+                                <td class="align-middle value">
                                     <span>@list.Value</span>
                                 </td>
                                     <td class="align-middle">
-                                        <span>@list.Tarih.Value.ToString("dd.MM.yyyy HH:mm")</span>
+                                        @if (list.Tarih != null)
+                                        {
+                                            <span>@list.Tarih.Value.ToString("dd.MM.yyyy HH:mm")</span>
+                                        }
                                     </td>
                                 <td class="align-middle d-flex justify-content-end">
                                     <a href="#!" data-mdb-toggle="tooltip" title="Done">
-                                        <input type="button" class="btn btn-warning" value="Güncelle" />
+                                        <form asp-action="Update" asp-controller="Home" method="post">
+                                            <input type="text" name="Value" class="deger" placeholder="Ögenin yeni halini giriniz" style="display:none" />
+                                            <input type="text" name="Tarih" value="@DateTime.Now" style="display:none" />
+                                            <input type="text" name="UserId" value="@ViewBag.UserId" style="display:none" />
+                                            <input type="button" class="btn btn-secondary edit" value="Düzenle" />
+                                            <input type="button" class="btn btn-warning save" value="Kaydet" style="display:none" />
+                                        </form>
                                     </a>
                                     &ensp;
                                         <a asp-action="Delete" asp-controller="Home" asp-route-id="@list.ListId" onclick="return confirm('@list.Value adlı ögeyi gerçekten silmek istiyor musunuz?')">

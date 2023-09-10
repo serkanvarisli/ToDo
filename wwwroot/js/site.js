@@ -10,3 +10,16 @@
         }
     });
 });
+
+$(document).ready(function () {
+    $(".edit").click(function () {
+        $(this).siblings(".save").show();
+        $(this).siblings(".deger").show();
+        $(this).hide();
+    });
+    $(".save").click(function () {
+        $(this).siblings(".edit").show();
+        $(this).siblings(".deger").hide();
+        $(this).hide();
+    });
+});
