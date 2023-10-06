@@ -1,15 +1,5 @@
 ﻿@model User
-@section nav{
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">To Do</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-}
+
 <section class="vh-100">
     <div class="container py-5 h-100">
         <div class="row d-flex align-items-center justify-content-center h-100">
@@ -33,19 +23,25 @@
                     </div>
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="form1Example23">Şifre</label> 
+                        <label class="form-label" for="form1Example23">Şifre</label>
                         <input type="password" id="password" name="UserPassword" class="form-control form-control-lg" required />
                         <span asp-validation-for="UserPassword" class="text-danger"></span>
                         <label class="form-label text-sm text-black-50" for="form1Example23">(Şifre en az 8 karakter olmalı)</label> <br />
                         <input type="checkbox" id="showPassword" /> Şifreyi göster
                         <span asp-validation-for="UserPassword" class="text-danger"></span>
+                        <br />
+                        <i>
+                            @TempData["Login"]
+                        </i>
+                        <i>
+                            @TempData["Hata"]
+                        </i>
                     </div>
                     <!-- Submit button -->
                     <center>
                         <button type="submit" class="btn btn-success btn-lg btn-block"> Kaydol </button>
-                        @TempData["Kayıt"]
-                        @TempData["Hata"]
                     </center>
+                    <br />
                     Hesabın Var Mı ?
                     <a asp-action="Index" asp-controller="Login">
                         Hemen Giriş Yap

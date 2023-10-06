@@ -46,20 +46,22 @@ namespace ToDo.Controllers
 
         public IActionResult Register()
         {
+
             return View();
         }
         [HttpPost]
         public IActionResult Register(User user)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
             else
             {
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            return RedirectToAction("Register", "Login");
+                TempData["Login"] = "Kayıt Başarılı giriş yapın";
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return View();
             }
         }
         public IActionResult Logout()

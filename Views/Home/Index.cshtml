@@ -38,7 +38,7 @@
                         <h2 class="my-4">YAPILACAKLAR LİSTESİ</h2>
                     </div>
                     <form asp-action="Add" asp-controller="Home" method="post">
-                        <input type="text" class="form-control" name="Value" placeholder="Listeye eklenecek ögeyi giriniz.." />
+                        <input type="text" class="form-control" name="Value" placeholder="Listeye eklenecek ögeyi giriniz.." required />
                         <br />
                         <input type="text" name="Tarih" value="@DateTime.Now" style="display:none" />
                         <input type="text" name="UserId" value="@ViewBag.UserId" style="display:none" />
