@@ -71,7 +71,6 @@
                                             <span>@list.Tarih.Value.ToString("dd.MM.yyyy HH:mm")</span>
                                         }
                                     </td>
- <button class="btn btn-success" onclick="onaylaVeYapildi('@list.ListId')">Yapıldı</button>
                                 <td class="align-middle d-flex justify-content-end">
                                         <form asp-action="Update" asp-controller="Home" method="post">
                                             <input type="hidden" name="ListId" value="@list.ListId" />
@@ -101,13 +100,4 @@
 </div>
 <br />
 <br />
-<script>
-    function onaylaVeYapildi(Value) {
-        var onay = confirm("Bu öğeyi yapıldı olarak işaretle. Onaylıyor musunuz?");
-        if (onay) {
-            // Kullanıcının "Tamam" düğmesine tıklaması durumunda yapılacak işlemler
-            var element = document.getElementById("value_" + Value);
-            element.style.textDecoration = "line-through";
-        }
-    }
-</script>
+
